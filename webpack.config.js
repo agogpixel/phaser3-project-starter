@@ -10,7 +10,7 @@ const isProd = nodeEnv === 'production';
 module.exports = {
   mode: isProd ? 'production' : 'development',
   entry: {
-    dank: './src/index.ts'
+    main: './src/index.ts'
   },
   devtool: isProd ? 'hidden-source-map' : 'source-map',
   module: {
