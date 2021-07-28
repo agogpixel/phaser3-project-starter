@@ -1,3 +1,5 @@
+import { MainScene, PreloadScene, TitleScene } from './scenes'
+
 export function app(): void {
   new Phaser.Game({
     title: 'agogpixel/phaser3-project-starter',
@@ -16,6 +18,6 @@ export function app(): void {
     plugins: {
       global: []
     },
-    scene: []
+    scene: [PreloadScene, TitleScene, MainScene]
   });
 }
