@@ -1,0 +1,41 @@
+{
+  "name": "@agogpixel/phaser3-project-starter",
+  "version": "0.0.0",
+  "description": "Phaser 3 project starter.",
+  "scripts": {
+    "start": "webpack serve --progress --color",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agogpixel/phaser3-project-starter.git"
+  },
+  "author": "kidthales <kidthales@agogpixel.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agogpixel/phaser3-project-starter/issues"
+  },
+  "homepage": "https://github.com/agogpixel/phaser3-project-starter#readme",
+  "dependencies": {
+    "phaser": "^3.55.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-webpack-plugin": "^3.0.1",
+    "html-webpack-plugin": "^5.3.2",
+    "prettier": "^2.3.2",
+    "shx": "^0.3.3",
+    "ts-loader": "^9.2.4",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5",
+    "webpack": "^5.47.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
