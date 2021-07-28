@@ -12,8 +12,8 @@ export function app(): void {
     scale: {
       mode: Phaser.Scale.FIT,
       autoCenter: Phaser.Scale.CENTER_BOTH,
-      width: 1600,
-      height: 900
+      width: '100%',
+      height: '100%'
     },
     plugins: {
       global: []
