@@ -1,0 +1,25 @@
+name: Unit Test & Build
+on:
+  workflow_dispatch:
+jobs:
+  Unit-Test-And-Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Dependencies
+        run: npm install
+      - name: Unit Test
+        run: npm test
+      - name: Build
+        run: npm run build
+      - name: Archive Coverage Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage
+      - name: Archive Build
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist

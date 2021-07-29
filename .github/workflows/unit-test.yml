@@ -1,14 +1,19 @@
-name: Test
+name: Unit Test
 on:
   push:
   workflow_dispatch:
 jobs:
-  Test:
+  Unit-Test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Dependencies
         run: npm install
-      - name: Test
+      - name: Unit Test
         run: npm test
+      - name: Archive Coverage Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage

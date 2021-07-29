@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const path = require('path');
 const webpack = require('webpack');
@@ -12,7 +13,7 @@ module.exports = {
   entry: {
     main: './src/index.ts'
   },
-  devtool: isProd ? 'hidden-source-map' : 'source-map',
+  devtool: isProd ? 'hidden-source-map' : 'eval-source-map',
   module: {
     rules: [
       {
@@ -27,7 +28,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    chunkFilename: '[name].[contenthash].js',
+    chunkFilename: 'js/[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
@@ -45,6 +46,11 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html')
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/assets", to: "assets" }
+      ]
     })
   ],
   devServer: {
