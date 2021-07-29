@@ -19,7 +19,7 @@ export class PreloadScene extends Phaser.Scene {
   /**
    * Lifecycle method called after init & before create.
    */
-  public preload(): void {}
+  public preload(): void { }
 
   /**
    * Lifecycle method called after init & preload.

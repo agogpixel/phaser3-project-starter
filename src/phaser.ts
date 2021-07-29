@@ -25,10 +25,10 @@ export async function phaser(): Promise<typeof Phaser> {
     Events: (await import(/* webpackChunkName: "phaser-events" */ 'phaser/src/events')).default,
     FacebookInstantGamesPlugin: typeof PLUGIN_FBINSTANT
       ? (
-          await import(
+        await import(
             /* webpackChunkName: "phaser-facebook" */ 'phaser/plugins/fbinstant/src/FacebookInstantGamesPlugin'
-          )
-        ).default
+        )
+      ).default
       : undefined,
     Game: (await import(/* webpackChunkName: "phaser-game" */ 'phaser/src/core/Game')).default,
     GameObjects: (await import(/* webpackChunkName: "phaser-gameobjects" */ 'phaser/src/gameobjects')).default,
