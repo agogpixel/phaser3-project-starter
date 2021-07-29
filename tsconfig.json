@@ -15,7 +15,7 @@
     "allowJs": true,
     "downlevelIteration": true,
     "target": "es5",
-    "types": ["node"],
+    "types": ["node", "jest"],
     "typeRoots": ["node_modules/@types"],
     "lib": ["esnext", "dom", "scripthost"]
   }

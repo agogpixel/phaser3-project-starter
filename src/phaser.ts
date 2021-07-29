@@ -74,7 +74,7 @@ export async function phaser(): Promise<typeof Phaser> {
     ).default;
   }
 
-  Phaser = Extend(false, Phaser, CONST);
+  Phaser = Extend.default(false, Phaser, CONST);
 
   global['Phaser'] = Phaser as any;
 
