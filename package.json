@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Phaser 3 project starter.",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --progress --color --display-error-details",
+    "build": "cross-env NODE_ENV=production webpack --progress --color",
     "start": "webpack-dev-server --progress --color",
     "test": "jest --coverage",
     "lint": "eslint jest.config.js webpack.config.js src"

@@ -5,18 +5,18 @@
     "outDir": "./dist",
     "sourceMap": true,
     "declaration": false,
-    "module": "es6",
+    "module": "esnext",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "downlevelIteration": false,
     "importHelpers": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
-    "downlevelIteration": true,
+    "resolveJsonModule": true,
     "target": "es6",
     "types": ["node", "jest"],
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es6", "dom", "scripthost", "webworker"]
+    "lib": ["es6", "dom", "scripthost"]
   }
 }

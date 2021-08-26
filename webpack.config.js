@@ -1,20 +1,40 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const { resolve } = require('path');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const { DefinePlugin } = require('webpack');
+
+const { description, version } = require('./package.json');
+
+const title = 'Phaser 3 Project Starter';
+const viewport = 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
+const srcPath = resolve(__dirname, 'src');
+const dstPath = resolve(__dirname, 'dist');
+
 module.exports = {
   mode: isProd ? 'production' : 'development',
-  entry: {
-    main: './src/index.ts'
-  },
   devtool: isProd ? 'hidden-source-map' : 'source-map',
+  entry: {
+    index: `${srcPath}/index.ts`
+  },
+  output: {
+    filename: '[name].js',
+    chunkFilename: 'js/[name].[contenthash].js',
+    path: dstPath
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  optimization: {
+    minimizer: [new TerserWebpackPlugin({})]
+  },
   module: {
     rules: [
       {
@@ -24,23 +44,16 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    extensions: ['.ts', '.js']
-  },
-  output: {
-    filename: 'js/[name].[contenthash].js',
-    chunkFilename: 'js/[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  optimization: {
-    minimizer: [new TerserWebpackPlugin({})]
-  },
   plugins: [
     isProd ? new CleanWebpackPlugin() : null,
     new DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv)
       },
+      // App build-time configurables.
+      APP_TITLE: JSON.stringify(title),
+      APP_VERSION: JSON.stringify(version),
+      // Phaser build flags.
       'typeof CANVAS_RENDERER': JSON.stringify(true),
       'typeof WEBGL_RENDERER': JSON.stringify(true),
       'typeof EXPERIMENTAL': JSON.stringify(false),
@@ -50,26 +63,27 @@ module.exports = {
       'typeof FEATURE_SOUND': JSON.stringify(true)
     }),
     new HtmlWebpackPlugin({
-      title: 'Phaser 3 Project Starter',
-      template: '!!ejs-loader?{"esModule":false}!' + path.resolve(__dirname, './src/index.html'),
+      title,
+      template: `!!ejs-loader?{"esModule":false}!${srcPath}/index.html`,
       filename: 'index.html',
       inject: 'body',
       minify: {
-        collapseWhitespace: true,
         minifyCSS: true,
         minifyJS: true
       },
       meta: {
-        viewport: 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'
+        viewport,
+        description,
+        version
       }
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: 'src/assets', to: 'assets' }]
+      patterns: [{ from: `${srcPath}/assets`, to: 'assets' }]
     })
   ].filter(Boolean),
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'src'),
+      directory: srcPath,
       publicPath: '/'
     },
     host: 'localhost',
