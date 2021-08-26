@@ -1,4 +1,4 @@
-import { phaser } from './phaser';
+import './phaser';
+import { app } from './app';
 
-// Bootstrap Phaser, then load the application & run it.
-phaser().then(() => import(/* webpackChunkName: "app" */ './app').then(({ app }) => app()));
+app();

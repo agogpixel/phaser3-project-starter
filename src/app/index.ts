@@ -1,4 +1,4 @@
-import { MainScene, PreloadScene, TitleScene } from './scenes'
+import { MainScene, PreloadScene, TitleScene } from './scenes';
 
 export function app(): void {
   new Phaser.Game({

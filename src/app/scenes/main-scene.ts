@@ -17,5 +17,7 @@ export class MainScene extends Phaser.Scene {
   /**
    * Lifecycle method called after init & preload.
    */
-  public create(): void { }
+  public create(): void {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+  }
 }

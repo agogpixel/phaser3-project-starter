@@ -19,7 +19,9 @@ export class PreloadScene extends Phaser.Scene {
   /**
    * Lifecycle method called after init & before create.
    */
-  public preload(): void { }
+  public preload(): void {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+  }
 
   /**
    * Lifecycle method called after init & preload.
@@ -30,7 +32,10 @@ export class PreloadScene extends Phaser.Scene {
       duration: 500,
       sleep: false,
       allowInput: false,
-      onUpdate: (progress: number) => { }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onUpdate: (progress: number) => {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+      }
     });
   }
 }
