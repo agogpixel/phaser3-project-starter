@@ -1,7 +1,7 @@
 import { MainScene, PreloadScene, TitleScene } from './scenes';
 
-export function app(title: string, version: string): void {
-  new Phaser.Game({
+export async function app(title: string, version: string) {
+  return new Phaser.Game({
     title,
     version,
     type: Phaser.AUTO,
