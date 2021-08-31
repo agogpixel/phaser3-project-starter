@@ -14,7 +14,7 @@ export class MainScene extends Phaser.Scene {
   /**
    * Lifecycle method called before all others.
    */
-  public init() {
+  public init(): void {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
   }
 
@@ -22,14 +22,14 @@ export class MainScene extends Phaser.Scene {
    * Lifecycle method called after init & before create. Ensures all assets load
    * before create is invoked.
    */
-  public preload() {
+  public preload(): void {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
   }
 
   /**
    * Lifecycle method called after init & preload.
    */
-  public create() {
+  public create(): void {
     const { centerX, centerY } = this.cameras.main;
 
     const img = this.add.image(centerX, centerY, 'phaser3');

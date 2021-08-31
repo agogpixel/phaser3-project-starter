@@ -32,14 +32,14 @@ This project starter provides facilities for customizing Phaser namespace build 
 
 ### File Structure
 
-```shell
+```text
 phaser3-project-starter/
  |
  ├──.github/                           * GitHub configurations.
  |   |
  |   ├──workflows/                     * GitHub Actions configurations.
- |   |   ├──unit-test-and-build.yml    * Example CI configuration.
- |   |   └──unit-test.yml              * Example CI configuration.
+ |   |   ├──test-build-deploy.yml      * Example CI/CD configuration (manual trigger).
+ |   |   └──test.yml                   * Example CI configuration (on push, all branches).
  |   |
  |   └──CODEOWNERS                     * Define who is responsible for code in the repository.
  │
@@ -101,6 +101,14 @@ Live development at `localhost:4200` via webpack-dev-server:
 
 ```shell
 npm start
+```
+
+### Lint
+
+Errors & warnings output to stdout via eslint:
+
+```shell
+npm run lint
 ```
 
 ### Unit Test

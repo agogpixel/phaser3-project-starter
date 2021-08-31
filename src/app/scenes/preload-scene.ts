@@ -15,7 +15,7 @@ export class PreloadScene extends Phaser.Scene {
   /**
    * Lifecycle method called before all others.
    */
-  public init() {
+  public init(): void {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
   }
 
@@ -23,14 +23,14 @@ export class PreloadScene extends Phaser.Scene {
    * Lifecycle method called after init & before create. Ensures all assets load
    * before create is invoked.
    */
-  public preload() {
+  public preload(): void {
     this.load.pack('assets', 'assets/manifest.json');
   }
 
   /**
    * Lifecycle method called after init & preload.
    */
-  public create() {
+  public create(): void {
     this.scene.transition({
       target: 'Main',
       duration: 500,

@@ -2,12 +2,12 @@ import { phaserFactory } from '../../phaser';
 
 describe('Preload Scene', () => {
   let game: Phaser.Game;
-  let scene: Phaser.Scene;
+  let scene: Phaser.Scene & { init: () => void; preload: () => void; create: () => void };
 
   // Squelch console.log output.
-  jest.spyOn(console, 'log').mockImplementation(() => {});
+  jest.spyOn(console, 'log').mockImplementation(() => undefined);
   // Running game calls window.focus method.
-  jest.spyOn(window, 'focus').mockImplementation(() => {});
+  jest.spyOn(window, 'focus').mockImplementation(() => undefined);
 
   beforeAll(() =>
     phaserFactory().then(() => {
@@ -45,8 +45,8 @@ describe('Preload Scene', () => {
   });
 
   it('starts & follows its lifecycle', () => {
-    const spyInit = jest.spyOn(scene, 'init' as any);
-    const spyPreload = jest.spyOn(scene, 'preload' as any);
+    const spyInit = jest.spyOn(scene, 'init');
+    const spyPreload = jest.spyOn(scene, 'preload');
     // Spy on file pack load.
     const spyLoadPack = jest.spyOn(scene.load, 'pack');
     // Spy on transition to next scene.
@@ -58,7 +58,7 @@ describe('Preload Scene', () => {
     expect(spyPreload).toHaveBeenCalled();
     expect(spyLoadPack).toHaveBeenCalled();
 
-    scene['create']();
+    scene.create();
 
     expect(spySceneTransition).toHaveBeenCalled();
   });

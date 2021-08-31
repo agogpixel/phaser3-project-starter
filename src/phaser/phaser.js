@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import 'phaser/src/polyfills';
 
 import * as CONST from 'phaser/src/const';

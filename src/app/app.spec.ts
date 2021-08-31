@@ -5,9 +5,9 @@ describe('App', () => {
   let application: { game: Phaser.Game };
 
   // Squelch console.log output.
-  jest.spyOn(console, 'log').mockImplementation(() => {});
+  jest.spyOn(console, 'log').mockImplementation(() => undefined);
   // Running game calls window.focus method.
-  jest.spyOn(window, 'focus').mockImplementation(() => {});
+  jest.spyOn(window, 'focus').mockImplementation(() => undefined);
 
   beforeAll(() => phaserFactory().then(() => import('./app').then(({ app: appFn }) => (app = appFn))));
 
