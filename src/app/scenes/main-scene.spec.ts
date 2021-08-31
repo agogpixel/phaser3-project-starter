@@ -4,7 +4,9 @@ describe('Main Scene', () => {
   let game: Phaser.Game;
   let scene: Phaser.Scene;
 
+  // Squelch console.log output.
   jest.spyOn(console, 'log').mockImplementation(() => {});
+  // Running game calls window.focus method.
   jest.spyOn(window, 'focus').mockImplementation(() => {});
 
   beforeAll(() =>
@@ -16,6 +18,7 @@ describe('Main Scene', () => {
         }
       });
 
+      // TODO: Test env issue: Pretend that built-in textures were loaded...
       game.textures.emit(Phaser.Textures.Events.READY);
     })
   );
@@ -41,21 +44,24 @@ describe('Main Scene', () => {
     expect(game.scene.getScene(scene.sys.settings.key)).toBeTruthy();
   });
 
-  it('starts', () => {
+  it('starts & follows its lifecycle', () => {
     const spyInit = jest.spyOn(scene, 'init' as any);
     const spyPreload = jest.spyOn(scene, 'preload' as any);
     const spyCreate = jest.spyOn(scene, 'create' as any);
-    const spyStartTween = jest.spyOn(scene.tweens, 'add');
+    // Spy on tween start after scene transition.
+    const spyTweensAdd = jest.spyOn(scene.tweens, 'add');
 
+    // Mock loaded texture.
     game.textures.addImage('phaser3', new Image());
+
     game.scene.start(scene.sys.settings.key);
 
     expect(spyInit).toHaveBeenCalled();
     expect(spyPreload).toHaveBeenCalled();
     expect(spyCreate).toHaveBeenCalled();
 
+    // Simulate scene transition.
     scene.events.emit(Phaser.Scenes.Events.TRANSITION_START);
-
-    expect(spyStartTween).toHaveBeenCalled();
+    expect(spyTweensAdd).toHaveBeenCalled();
   });
 });

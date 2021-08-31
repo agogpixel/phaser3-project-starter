@@ -4,7 +4,9 @@ describe('Preload Scene', () => {
   let game: Phaser.Game;
   let scene: Phaser.Scene;
 
+  // Squelch console.log output.
   jest.spyOn(console, 'log').mockImplementation(() => {});
+  // Running game calls window.focus method.
   jest.spyOn(window, 'focus').mockImplementation(() => {});
 
   beforeAll(() =>
@@ -16,6 +18,7 @@ describe('Preload Scene', () => {
         }
       });
 
+      // TODO: Test env issue: Pretend that built-in textures were loaded...
       game.textures.emit(Phaser.Textures.Events.READY);
     })
   );
@@ -41,20 +44,25 @@ describe('Preload Scene', () => {
     expect(game.scene.getScene(scene.sys.settings.key)).toBeTruthy();
   });
 
-  it('starts', () => {
+  it('starts & follows its lifecycle', () => {
     const spyInit = jest.spyOn(scene, 'init' as any);
     const spyPreload = jest.spyOn(scene, 'preload' as any);
-    const spyCreate = jest.spyOn(scene, 'create' as any);
-    const spyStartNextScene = jest.spyOn(scene.scene, 'transition');
+    // Spy on file pack load.
+    const spyLoadPack = jest.spyOn(scene.load, 'pack');
+    // TODO: Test env issue: Uncomment when loading is resolved...
+    //const spyCreate = jest.spyOn(scene, 'create' as any);
+    // Spy on transition to next scene.
+    const spySceneTransition = jest.spyOn(scene.scene, 'transition');
 
     game.scene.start(scene.sys.settings.key);
 
     expect(spyInit).toHaveBeenCalled();
     expect(spyPreload).toHaveBeenCalled();
-
+    expect(spyLoadPack).toHaveBeenCalled();
+    // TODO: Test env issue: Pretend that file pack assets were loaded...
     scene['create']();
-
-    expect(spyCreate).toHaveBeenCalled();
-    expect(spyStartNextScene).toHaveBeenCalled();
+    // TODO: Test env issue: Uncomment when loading is resolved...
+    //expect(spyCreate).toHaveBeenCalled();
+    expect(spySceneTransition).toHaveBeenCalled();
   });
 });

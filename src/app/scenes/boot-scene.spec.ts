@@ -4,7 +4,9 @@ describe('Boot Scene', () => {
   let game: Phaser.Game;
   let scene: Phaser.Scene;
 
+  // Squelch console.log output.
   jest.spyOn(console, 'log').mockImplementation(() => {});
+  // Running game calls window.focus method.
   jest.spyOn(window, 'focus').mockImplementation(() => {});
 
   beforeAll(() =>
@@ -16,6 +18,7 @@ describe('Boot Scene', () => {
         }
       });
 
+      // TODO: Test env issue: Pretend that built-in textures were loaded...
       game.textures.emit(Phaser.Textures.Events.READY);
     })
   );
@@ -37,21 +40,22 @@ describe('Boot Scene', () => {
   it("has its scene key set to 'Boot'", () => expect(scene.sys.settings.key).toBe('Boot'));
 
   it('can be added to a game', () => {
-    game.scene.add((scene as Phaser.Scene).sys.settings.key, scene);
+    game.scene.add(scene.sys.settings.key, scene);
     expect(game.scene.getScene(scene.sys.settings.key)).toBeTruthy();
   });
 
-  it('starts', () => {
+  it('starts & follows its lifecycle', () => {
     const spyInit = jest.spyOn(scene, 'init' as any);
     const spyPreload = jest.spyOn(scene, 'preload' as any);
     const spyCreate = jest.spyOn(scene, 'create' as any);
-    const spyStartNextScene = jest.spyOn(scene.scene, 'start');
+    // Spy on next scene start.
+    const spySceneStart = jest.spyOn(scene.scene, 'start');
 
     game.scene.start(scene.sys.settings.key);
 
     expect(spyInit).toHaveBeenCalled();
     expect(spyPreload).toHaveBeenCalled();
     expect(spyCreate).toHaveBeenCalled();
-    expect(spyStartNextScene).toHaveBeenCalled();
+    expect(spySceneStart).toHaveBeenCalled();
   });
 });
