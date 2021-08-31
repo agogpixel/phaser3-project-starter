@@ -51,8 +51,8 @@ module.exports = {
         NODE_ENV: JSON.stringify(nodeEnv)
       },
       // App build-time configurables.
-      APP_TITLE: JSON.stringify(title),
-      APP_VERSION: JSON.stringify(version),
+      GAME_TITLE: JSON.stringify(title),
+      GAME_VERSION: JSON.stringify(version),
       // Phaser build flags.
       'typeof CANVAS_RENDERER': JSON.stringify(true),
       'typeof WEBGL_RENDERER': JSON.stringify(true),

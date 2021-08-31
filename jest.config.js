@@ -5,6 +5,6 @@ module.exports = {
   setupFiles: ['jest-canvas-mock'],
   verbose: true,
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.ts', '!src/**/index.ts'],
+  collectCoverageFrom: ['src/**/*.ts', '!src/**/index.ts', '!src/app/game-config.ts'],
   coverageReporters: ['text', 'html']
 };

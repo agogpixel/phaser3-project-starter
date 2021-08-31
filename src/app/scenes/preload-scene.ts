@@ -1,4 +1,4 @@
-import { TitleScene } from './title-scene';
+import { MainScene } from './main-scene';
 
 /**
  * Preload scene.
@@ -17,10 +17,17 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   /**
+   * Lifecycle method called before all others.
+   */
+  public init(): void {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+  }
+
+  /**
    * Lifecycle method called after init & before create.
    */
   public preload(): void {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    this.load.pack('assets', 'assets/manifest.json');
   }
 
   /**
@@ -28,7 +35,7 @@ export class PreloadScene extends Phaser.Scene {
    */
   public create(): void {
     this.scene.transition({
-      target: TitleScene.key,
+      target: MainScene.key,
       duration: 500,
       sleep: false,
       allowInput: false,
