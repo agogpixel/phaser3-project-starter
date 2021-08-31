@@ -1,0 +1,11 @@
+{
+  "textures": {
+    "path": "assets/textures",
+    "files": [
+      {
+        "type": "image",
+        "key": "phaser3"
+      }
+    ]
+  }
+}
