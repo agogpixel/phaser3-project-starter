@@ -1,36 +1,45 @@
-import { TitleScene } from './title-scene';
-
 /**
  * Preload scene.
+ *
+ * Loads main assets & resources required for the game. Create & update load
+ * progress graphics here.
  */
 export class PreloadScene extends Phaser.Scene {
   /**
-   * Scene key.
-   */
-  public static readonly key = 'Preload';
-
-  /**
-   * Instantiate load scene.
+   * Instantiate preload scene.
    */
   public constructor() {
-    super(PreloadScene.key);
+    super('Preload');
   }
 
   /**
-   * Lifecycle method called after init & before create.
+   * Lifecycle method called before all others.
    */
-  public preload(): void { }
+  public init() {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+  }
+
+  /**
+   * Lifecycle method called after init & before create. Ensures all assets load
+   * before create is invoked.
+   */
+  public preload() {
+    this.load.pack('assets', 'assets/manifest.json');
+  }
 
   /**
    * Lifecycle method called after init & preload.
    */
-  public create(): void {
+  public create() {
     this.scene.transition({
-      target: TitleScene.key,
+      target: 'Main',
       duration: 500,
       sleep: false,
       allowInput: false,
-      onUpdate: (progress: number) => { }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onUpdate: (progress: number) => {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+      }
     });
   }
 }

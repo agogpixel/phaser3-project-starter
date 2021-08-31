@@ -1,4 +1,11 @@
-import { phaser } from './phaser';
+// See DefinePlugin in webpack.config.json file.
+declare const GAME_TITLE: string;
+declare const GAME_VERSION: string;
 
-// Bootstrap Phaser, then load the application & run it.
-phaser().then(() => import(/* webpackChunkName: "app" */ './app').then(({ app }) => app()));
+(async function bootstrap() {
+  const { phaserFactory } = await import(/* webpackChunkName: "phaser" */ './phaser');
+  await phaserFactory();
+
+  const { app, gameConfig } = await import(/* webpackChunkName: "app" */ './app');
+  await app({ ...gameConfig, title: GAME_TITLE, version: GAME_VERSION });
+})();

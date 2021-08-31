@@ -7,16 +7,16 @@
     "declaration": false,
     "module": "esnext",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "downlevelIteration": false,
     "importHelpers": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
-    "downlevelIteration": true,
-    "target": "es5",
-    "types": ["node", "jest"],
+    "resolveJsonModule": true,
+    "target": "es6",
+    "types": ["node", "jest", "phaser"],
     "typeRoots": ["node_modules/@types"],
-    "lib": ["esnext", "dom", "scripthost"]
+    "lib": ["es6", "dom", "scripthost"]
   }
 }
