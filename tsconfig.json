@@ -15,7 +15,7 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "target": "es6",
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "phaser"],
     "typeRoots": ["node_modules/@types"],
     "lib": ["es6", "dom", "scripthost"]
   }

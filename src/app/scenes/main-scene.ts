@@ -1,37 +1,35 @@
 /**
  * Main scene.
+ *
+ * Suitable for game logic and display.
  */
 export class MainScene extends Phaser.Scene {
-  /**
-   * Scene key.
-   */
-  public static readonly key = 'Main';
-
   /**
    * Instantiate main scene.
    */
   public constructor() {
-    super(MainScene.key);
+    super('Main');
   }
 
   /**
    * Lifecycle method called before all others.
    */
-  public init(): void {
+  public init() {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
   }
 
   /**
-   * Lifecycle method called after init & before create.
+   * Lifecycle method called after init & before create. Ensures all assets load
+   * before create is invoked.
    */
-  public preload(): void {
+  public preload() {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
   }
 
   /**
    * Lifecycle method called after init & preload.
    */
-  public create(): void {
+  public create() {
     const { centerX, centerY } = this.cameras.main;
 
     const img = this.add.image(centerX, centerY, 'phaser3');

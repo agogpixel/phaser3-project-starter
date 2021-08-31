@@ -40,7 +40,7 @@ describe('Preload Scene', () => {
   it("has its scene key set to 'Preload'", () => expect(scene.sys.settings.key).toBe('Preload'));
 
   it('can be added to a game', () => {
-    game.scene.add((scene as Phaser.Scene).sys.settings.key, scene);
+    game.scene.add(scene.sys.settings.key, scene);
     expect(game.scene.getScene(scene.sys.settings.key)).toBeTruthy();
   });
 
@@ -49,8 +49,6 @@ describe('Preload Scene', () => {
     const spyPreload = jest.spyOn(scene, 'preload' as any);
     // Spy on file pack load.
     const spyLoadPack = jest.spyOn(scene.load, 'pack');
-    // TODO: Test env issue: Uncomment when loading is resolved...
-    //const spyCreate = jest.spyOn(scene, 'create' as any);
     // Spy on transition to next scene.
     const spySceneTransition = jest.spyOn(scene.scene, 'transition');
 
@@ -59,10 +57,9 @@ describe('Preload Scene', () => {
     expect(spyInit).toHaveBeenCalled();
     expect(spyPreload).toHaveBeenCalled();
     expect(spyLoadPack).toHaveBeenCalled();
-    // TODO: Test env issue: Pretend that file pack assets were loaded...
+
     scene['create']();
-    // TODO: Test env issue: Uncomment when loading is resolved...
-    //expect(spyCreate).toHaveBeenCalled();
+
     expect(spySceneTransition).toHaveBeenCalled();
   });
 });

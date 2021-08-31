@@ -1,39 +1,36 @@
-import { PreloadScene } from './preload-scene';
-
 /**
  * Boot scene.
+ *
+ * Suitable for loading and initializing functionality required in other scenes
+ * (ie. Load basic assets, communicate with a backend, etc.).
  */
 export class BootScene extends Phaser.Scene {
-  /**
-   * Scene key.
-   */
-  public static readonly key = 'Boot';
-
   /**
    * Instantiate boot scene.
    */
   public constructor() {
-    super(BootScene.key);
+    super('Boot');
   }
 
   /**
    * Lifecycle method called before all others.
    */
-  public init(): void {
+  public init() {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
   }
 
   /**
-   * Lifecycle method called after init & before create.
+   * Lifecycle method called after init & before create. Ensures all assets load
+   * before create is invoked.
    */
-  public preload(): void {
+  public preload() {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
   }
 
   /**
    * Lifecycle method called after init & preload.
    */
-  public create(): void {
-    this.scene.start(PreloadScene.key);
+  public create() {
+    this.scene.start('Preload');
   }
 }

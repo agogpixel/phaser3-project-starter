@@ -3,12 +3,12 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { resolve } = require('path');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 
-const { description, version } = require('./package.json');
+const { resolve } = require('path');
 
+const { description, version } = require('./package.json');
 const title = 'Phaser 3 Project Starter';
 const viewport = 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0';
 

@@ -1,5 +1,8 @@
 import { BootScene, MainScene, PreloadScene } from './scenes';
 
+/**
+ * Game configuration.
+ */
 export const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: 'body',

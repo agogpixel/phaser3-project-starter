@@ -40,7 +40,7 @@ describe('Main Scene', () => {
   it("has its scene key set to 'Main'", () => expect(scene.sys.settings.key).toBe('Main'));
 
   it('can be added to a game', () => {
-    game.scene.add((scene as Phaser.Scene).sys.settings.key, scene);
+    game.scene.add(scene.sys.settings.key, scene);
     expect(game.scene.getScene(scene.sys.settings.key)).toBeTruthy();
   });
 

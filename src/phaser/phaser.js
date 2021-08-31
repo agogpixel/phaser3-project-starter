@@ -3,6 +3,9 @@ import 'phaser/src/polyfills';
 import * as CONST from 'phaser/src/const';
 import * as Extend from 'phaser/src/utils/object/Extend';
 
+/**
+ * Load the Phaser namespace with global scope.
+ */
 export async function phaser() {
   let Phaser = {
     Actions: require('phaser/src/actions'),
