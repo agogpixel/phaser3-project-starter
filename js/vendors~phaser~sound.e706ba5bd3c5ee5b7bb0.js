@@ -1,2 +1,0 @@
-/*! For license information please see vendors~phaser~sound.e706ba5bd3c5ee5b7bb0.js.LICENSE.txt */
-(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{1498:function(o,n,d){o.exports={SoundManagerCreator:d(445),Events:d(77),BaseSound:d(156),BaseSoundManager:d(155),WebAudioSound:d(453),WebAudioSoundManager:d(451),HTML5AudioSound:d(448),HTML5AudioSoundManager:d(446),NoAudioSound:d(450),NoAudioSoundManager:d(449)}}}]);
