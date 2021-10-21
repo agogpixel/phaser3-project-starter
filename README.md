@@ -1,6 +1,6 @@
 # agogpixel/phaser3-project-starter
 
-Another opinionated [Phaser 3](https://github.com/photonstorm/phaser) project starter with [TypeScript](https://www.typescriptlang.org/), [webpack](https://webpack.js.org/), & [jest](https://jestjs.io/).
+Another opinionated [Phaser 3](https://github.com/photonstorm/phaser) project starter with [TypeScript](https://www.typescriptlang.org/), [webpack](https://webpack.js.org/), [Sass](https://sass-lang.com/), & [jest](https://jestjs.io/).
 
 Code style/formatting with [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/); pre-commit hook via [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged).
 
@@ -30,7 +30,9 @@ npm install
 
 ## Usage
 
-This project starter provides facilities for customizing Phaser namespace build and load functionality. This is structured around Webpack `v4` as that is what the Phaser 3 project uses (other useful packages may still be dependent on `v4` as well - for example [cordova-webpack-plugin](https://github.com/kotarella1110/cordova-plugin-webpack)). See [phaser.js](./src/phaser/phaser.js) for customizing a Phaser build based on the currently installed Phaser NPM package.
+This project starter provides facilities for customizing Phaser namespace build and load functionality. See [phaser.js](./src/phaser/phaser.js) for customizing a Phaser build based on the currently installed Phaser NPM package.
+
+For use cases with [Cordova](https://cordova.apache.org/), please see [agogpixel/phaser3-cordova-project-starter](https://github.com/agogpixel/phaser3-cordova-project-starter).
 
 ### File Structure
 
@@ -79,6 +81,9 @@ phaser3-project-starter/
  |   |   ├──phaaser-factory.ts         * Phaser factory api.
  |   |   └──phaser.js                  * Custom Phaser build based on currently installed Phaser NPM package.
  |   |
+ |   ├──styles/                        * Styling.
+ |   |   └──styles.scss                * Global styles.
+ |   |
  |   ├──index.html                     * HTML template.
  |   └──index.ts                       * Bootstrap & run the application.
  |
@@ -111,6 +116,12 @@ Errors & warnings output to stdout via eslint:
 
 ```shell
 npm run lint
+```
+
+Automatically fix fomatting issues (_careful_):
+
+```shell
+npm run lint:fix
 ```
 
 ### Unit Test
