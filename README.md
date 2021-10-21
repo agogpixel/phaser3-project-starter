@@ -87,7 +87,14 @@ phaser3-project-starter/
  |   ├──index.html                     * HTML template.
  |   └──index.ts                       * Bootstrap & run the application.
  |
+ ├──test/                              * Testing resources.
+ |   |
+ |   └──mocks/                         * Testing mock files.
+ |       ├──file-mock.js               * Mock module import of most binary resources.
+ |       └──style-mock.js              * Mock module import of styles.
+ |
  ├──.editorconfig                      * EditorConfig configurations.
+ ├──.eslintignore                      * ESLint ignore file.
  ├──.eslintrc                          * ESLint configurations.
  ├──.gitignore                         * Git ignore file.
  ├──.npmrc                             * NPM configuration.

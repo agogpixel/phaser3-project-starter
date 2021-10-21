@@ -66,7 +66,7 @@ module.exports = {
     ]
   },
   plugins: [
-    isProd ? new CleanWebpackPlugin() : null,
+    isProd ? new CleanWebpackPlugin() : undefined,
     isProd ? new MiniCssExtractPlugin() : undefined,
     new DefinePlugin({
       'process.env': {
