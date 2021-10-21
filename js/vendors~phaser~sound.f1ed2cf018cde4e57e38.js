@@ -1,0 +1,2 @@
+/*! For license information please see vendors~phaser~sound.f1ed2cf018cde4e57e38.js.LICENSE.txt */
+(self.webpackChunk_agogpixel_phaser3_project_starter=self.webpackChunk_agogpixel_phaser3_project_starter||[]).push([[65],{84146:(e,o,a)=>{e.exports={SoundManagerCreator:a(72875),Events:a(21577),BaseSound:a(93912),BaseSoundManager:a(84768),WebAudioSound:a(34630),WebAudioSoundManager:a(36083),HTML5AudioSound:a(8081),HTML5AudioSoundManager:a(13273),NoAudioSound:a(56925),NoAudioSoundManager:a(35384)}}}]);

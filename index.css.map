@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":"AAEA,OACE,sB","sources":["webpack://@agogpixel/phaser3-project-starter/./src/styles/styles.scss"],"sourcesContent":["/* Global syles. */\n\ncanvas {\n  border: 5px solid #ddd;\n}\n"],"names":[],"sourceRoot":""}
