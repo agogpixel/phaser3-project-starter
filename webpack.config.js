@@ -3,14 +3,14 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { DefinePlugin } = require('webpack');
 
 const { resolve } = require('path');
 
 const { description, version } = require('./package.json');
 const title = 'Phaser 3 Project Starter';
-const viewport = 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0';
+const viewport = 'user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
@@ -32,20 +32,42 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js']
   },
-  optimization: {
-    minimizer: [new TerserWebpackPlugin({})]
-  },
   module: {
     rules: [
       {
         test: /\.(ts|js)$/,
         use: ['ts-loader', 'source-map-loader'],
+        include: srcPath,
         exclude: /node_modules/
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              minimize: isProd
+            }
+          }
+        ]
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          isProd ? { loader: MiniCssExtractPlugin.loader } : { loader: 'style-loader' },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
       }
     ]
   },
   plugins: [
     isProd ? new CleanWebpackPlugin() : null,
+    isProd ? new MiniCssExtractPlugin() : undefined,
     new DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv)
@@ -68,8 +90,15 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
       minify: {
-        minifyCSS: true,
-        minifyJS: true
+        minifyCSS: isProd,
+        minifyJS: isProd,
+        collapseWhitespace: isProd,
+        keepClosingSlash: !isProd,
+        removeComments: isProd,
+        removeRedundantAttributes: isProd,
+        removeScriptTypeAttributes: isProd,
+        removeStyleLinkTypeAttributes: isProd,
+        useShortDoctype: isProd
       },
       meta: {
         viewport,

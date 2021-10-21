@@ -2,6 +2,8 @@
 declare const GAME_TITLE: string;
 declare const GAME_VERSION: string;
 
+import './styles/styles.scss';
+
 (async function bootstrap() {
   const { phaserFactory } = await import(/* webpackChunkName: "phaser" */ './phaser');
   await phaserFactory();
