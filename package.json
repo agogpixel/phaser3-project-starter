@@ -1,6 +1,6 @@
 {
   "name": "@agogpixel/phaser3-project-starter",
-  "version": "0.4.0",
+  "version": "0.0.0",
   "description": "Phaser 3 project starter.",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --color",
